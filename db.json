@@ -15,7 +15,7 @@
             },
             "content": {
               "name": "content",
-              "access": true
+              "access": false
             },
             "footer": {
               "name": "footer",
@@ -32,7 +32,7 @@
             },
             "content": {
               "name": "content",
-              "access": true,
+              "access": false,
               "sections": {
                 "name": {
                   "name": "name",
@@ -85,25 +85,25 @@
               "sections": {
                 "goods": {
                   "name": "goods",
-                  "access": false
+                  "access": true
                 },
                 "services": {
                   "name": "services",
-                  "access": false
+                  "access": true
                 },
                 "inbound": {
                   "name": "inbound",
-                  "access": false
+                  "access": true
                 },
                 "outbound": {
                   "name": "outbound",
-                  "access": false
+                  "access": true
                 }
               }
             },
             "footer": {
               "name": "footer",
-              "access": false
+              "access": true
             }
           }
         }
@@ -116,7 +116,7 @@
       "permissions": {
         "home": {
           "name": "home",
-          "access": true,
+          "access": false,
           "sections": {
             "header": {
               "name": "header",
@@ -142,7 +142,7 @@
             },
             "content": {
               "name": "content",
-              "access": false,
+              "access": true,
               "sections": {
                 "name": {
                   "name": "name",
@@ -154,7 +154,7 @@
                 },
                 "phone": {
                   "name": "phone",
-                  "access": false
+                  "access": true
                 },
                 "age": {
                   "name": "age",
@@ -162,15 +162,15 @@
                 },
                 "gender": {
                   "name": "gender",
-                  "access": false
+                  "access": true
                 },
                 "salary": {
                   "name": "salary",
-                  "access": false
+                  "access": true
                 },
                 "relationship": {
                   "name": "relationship status",
-                  "access": false
+                  "access": true
                 }
               }
             },
@@ -194,19 +194,19 @@
               "sections": {
                 "goods": {
                   "name": "goods",
-                  "access": true
+                  "access": false
                 },
                 "services": {
                   "name": "services",
-                  "access": true
+                  "access": false
                 },
                 "inbound": {
                   "name": "inbound",
-                  "access": true
+                  "access": false
                 },
                 "outbound": {
                   "name": "outbound",
-                  "access": true
+                  "access": false
                 }
               }
             },

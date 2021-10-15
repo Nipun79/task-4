@@ -31,7 +31,7 @@
                     :label="content.name"
                     color="success"
                     v-model="content.access"
-                    @click="change(item.name + '-content')"
+                    @click="change(content.name + '-content')"
                   ></v-switch>
                 </div>
               </div>
@@ -39,6 +39,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Succesfull-message -->
       <div>
         <v-dialog v-model="dialog" width="500">
           <template v-slot:activator="{ on, attrs }">
@@ -65,6 +67,27 @@
           </v-card>
         </v-dialog>
       </div>
+
+<!--  Error-message -->
+<v-snackbar
+      v-model="snackbar"
+      :timeout="timeout"
+    >
+      Parent is not active
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="blue"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+
+
     </v-card>
   </div>
 </template>
@@ -74,6 +97,8 @@ import Component from "vue-class-component";
 import { vxm } from "../store/store.vuex";
 @Component
 export default class AccesController extends Vue {
+  snackbar=false
+  timeout= 2000
   data = vxm.utility;
   items = {};
   async mounted() {
@@ -86,63 +111,151 @@ export default class AccesController extends Vue {
   dialog = false;
   event = "";
   change(event) {
-      let home = this.items.home.sections;
-      console.log(event);
-    
-    if (
-      event === "homefooter" ||
-      event === "homeheader" ||
-      event === "homecontent"
-    ) {
-      if (this.items.home.access === false) {
-        
-        this.items.home.sections.header.access = !this.items.home.sections.header.access;
-        alert("Parent is not active"); 
-        this.items.home.sections.footer.access = false;
-        this.items.home.sections.content.access = false;
-      }
-    }
+    console.log(event);
 
     if (event === "home") {
-    
+      let home = this.items.home.sections;
       home.header.access = false;
       home.footer.access = false;
       home.content.access = false;
     }
+
     if (event === "user") {
       let user = this.items.user.sections;
       user.header.access = false;
       user.footer.access = false;
       user.content.access = false;
-      // event = "user-content";
+      event = "usercontent";
     }
+
     if (event === "transaction") {
       let transaction = this.items.transaction.sections;
       transaction.header.access = false;
       transaction.footer.access = false;
       transaction.content.access = false;
-      // event = "transaction-content";
+      event = "transactioncontent";
     }
-    // if (event === "user-content") {
-    //   let user = this.items.user.sections.content.sections;
-    //   user.name.access = false;
-    //   user.phone.access = false;
-    //   user.age.access = false;
-    //   user.salary.access = false;
-    //   user.gender.access = false;
-    //   user.email.access = false;
-    //   user.relationship.access = false;
-    //   console.log("changed");
-    // }
-    // if (event === "transaction-content") {
-    //   let transaction = this.items.transaction.sections.content.sections;
-    //   transaction.goods.access = false;
-    //   transaction.services.access = false;
-    //   transaction.inbound.access = false;
-    //   transaction.outbound.access = false;
-    // }
+
+    if (event === "usercontent") {
+      let user = this.items.user.sections.content.sections;
+      user.name.access = false;
+      user.phone.access = false;
+      user.age.access = false;
+      user.salary.access = false;
+      user.gender.access = false;
+      user.email.access = false;
+      user.relationship.access = false;
+    }
+
+    if (event === "transactioncontent") {
+      let transaction = this.items.transaction.sections.content.sections;
+      transaction.goods.access = false;
+      transaction.services.access = false;
+      transaction.inbound.access = false;
+      transaction.outbound.access = false;
+    }
+
+    if (
+      event === "homefooter" ||
+      event === "homeheader" ||
+      event === "homecontent"
+    ) {
+      let home = this.items.home;
+      if (home.access === false) {
+        setTimeout(
+          () =>
+            (home.sections.header.access =
+              home.sections.footer.access =
+              home.sections.content.access =
+                false),
+          10
+        );
+        this.snackbar=true
+      }
+    }
+    if (
+      event === "name-content" ||
+      event === "email-content" ||
+      event === "phone-content" ||
+      event === "age-content" ||
+      event === "gender-content" ||
+      event === "salary-content" ||
+      event === "relationship status-content" ||
+      event === "userfooter" ||
+      event === "userheader" ||
+      event === "usercontent"
+    ) {
+      let user = this.items.user.sections.content.sections;
+      if (this.items.user.sections.content.access === false) {
+        setTimeout(() => {
+          user.name.access =
+            user.phone.access =
+            user.age.access =
+            user.salary.access =
+            user.gender.access =
+            user.email.access =
+            user.relationship.access =
+              false;
+        }, 10);
+        this.snackbar=true
+      }
+    }
+
+    if (
+      event === "userheader" ||
+      event === "usercontent" ||
+      event === "userfooter"
+    ) {
+      if (this.items.user.access === false) {
+        setTimeout(() => {
+          this.items.user.sections.header.access =
+            this.items.user.sections.content.access =
+            this.items.user.sections.footer.access =
+              false;
+        }, 10);
+        this.snackbar=true
+      }
+    }
+
+    if (
+      event === "goods-content" ||
+      event === "services-content" ||
+      event === "inbound-content" ||
+      event === "outbound-content"
+    ) {
+      if (this.items.transaction.sections.content.access === false) {
+        let transaction = this.items.transaction.sections.content.sections;
+        setTimeout(() => {
+          transaction.goods.access =
+            transaction.services.access =
+            transaction.inbound.access =
+            transaction.outbound.access =
+              false;
+        }, 10);
+        this.snackbar=true
+      }
+    }
+    if (
+      event === "transactionheader" ||
+      event === "transactioncontent" ||
+      event === "transactionfooter"
+    ) {
+      if (this.items.transaction.access === false) {
+        let transaction = this.items.transaction.sections;
+        setTimeout(() => {
+          transaction.header.access =
+            transaction.footer.access =
+            transaction.content.access =
+              false;
+        }, 10);
+        this.snackbar=true
+      }
+    }
   }
 }
 </script>
-<style>
-</style>
+
+
+
+ 
+ 
