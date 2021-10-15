@@ -1,0 +1,222 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Nipun",
+      "password": "1234",
+      "permissions": {
+        "home": {
+          "name": "home",
+          "access": true,
+          "sections": {
+            "header": {
+              "name": "header",
+              "access": false
+            },
+            "content": {
+              "name": "content",
+              "access": true
+            },
+            "footer": {
+              "name": "footer",
+              "access": false
+            }
+          }
+        },
+        "user": {
+          "name": "user",
+          "sections": {
+            "header": {
+              "name": "header",
+              "access": false
+            },
+            "content": {
+              "name": "content",
+              "access": true,
+              "sections": {
+                "name": {
+                  "name": "name",
+                  "access": false
+                },
+                "email": {
+                  "name": "email",
+                  "access": false
+                },
+                "phone": {
+                  "name": "phone",
+                  "access": false
+                },
+                "age": {
+                  "name": "age",
+                  "access": false
+                },
+                "gender": {
+                  "name": "gender",
+                  "access": false
+                },
+                "salary": {
+                  "name": "salary",
+                  "access": false
+                },
+                "relationship": {
+                  "name": "relationship status",
+                  "access": false
+                }
+              }
+            },
+            "footer": {
+              "name": "footer",
+              "access": false
+            }
+          },
+          "access": true
+        },
+        "transaction": {
+          "name": "transaction",
+          "access": true,
+          "sections": {
+            "header": {
+              "name": "header",
+              "access": true
+            },
+            "content": {
+              "name": "content",
+              "access": true,
+              "sections": {
+                "goods": {
+                  "name": "goods",
+                  "access": false
+                },
+                "services": {
+                  "name": "services",
+                  "access": false
+                },
+                "inbound": {
+                  "name": "inbound",
+                  "access": false
+                },
+                "outbound": {
+                  "name": "outbound",
+                  "access": false
+                }
+              }
+            },
+            "footer": {
+              "name": "footer",
+              "access": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "Nipun2",
+      "password": "1234",
+      "permissions": {
+        "home": {
+          "name": "home",
+          "access": true,
+          "sections": {
+            "header": {
+              "name": "header",
+              "access": false
+            },
+            "content": {
+              "name": "content",
+              "access": false
+            },
+            "footer": {
+              "name": "footer",
+              "access": false
+            }
+          }
+        },
+        "user": {
+          "name": "user",
+          "access": true,
+          "sections": {
+            "header": {
+              "name": "header",
+              "access": false
+            },
+            "content": {
+              "name": "content",
+              "access": false,
+              "sections": {
+                "name": {
+                  "name": "name",
+                  "access": true
+                },
+                "email": {
+                  "name": "email",
+                  "access": true
+                },
+                "phone": {
+                  "name": "phone",
+                  "access": false
+                },
+                "age": {
+                  "name": "age",
+                  "access": true
+                },
+                "gender": {
+                  "name": "gender",
+                  "access": false
+                },
+                "salary": {
+                  "name": "salary",
+                  "access": false
+                },
+                "relationship": {
+                  "name": "relationship status",
+                  "access": false
+                }
+              }
+            },
+            "footer": {
+              "name": "footer",
+              "access": false
+            }
+          }
+        },
+        "transaction": {
+          "name": "transaction",
+          "access": true,
+          "sections": {
+            "header": {
+              "name": "header",
+              "access": true
+            },
+            "content": {
+              "name": "content",
+              "access": true,
+              "sections": {
+                "goods": {
+                  "name": "goods",
+                  "access": true
+                },
+                "services": {
+                  "name": "services",
+                  "access": true
+                },
+                "inbound": {
+                  "name": "inbound",
+                  "access": true
+                },
+                "outbound": {
+                  "name": "outbound",
+                  "access": true
+                }
+              }
+            },
+            "footer": {
+              "name": "footer",
+              "access": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

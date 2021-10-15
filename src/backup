@@ -1,0 +1,147 @@
+    <v-card
+      class="mx-auto"
+      max-width="800"
+      style="padding: 10px; font-weight: 800"
+    >
+      <v-switch
+        v-model="items.home.access"
+        label="Home Page"
+        color="success"
+      ></v-switch>
+      <div style="margin-left: 50px; margin-top: -15px">
+        <v-switch
+          v-model="items.home.sections.header.access"
+          label="Header"
+          color="success"
+        ></v-switch>
+        <v-switch
+          v-model="items.home.sections.content.access"
+          label="content"
+          color="success"
+        ></v-switch>
+        <v-switch
+          v-model="items.home.sections.footer.access"
+          label="Footer"
+          color="success"
+        ></v-switch>
+      </div>
+      <!--User-->
+      <br />
+
+      <v-switch
+        v-model="items.user.access"
+        label="User Page"
+        color="success"
+      ></v-switch>
+      <div style="margin-left: 50px">
+        <v-switch
+          v-model="items.user.sections.header.access"
+          label="Header"
+          color="success"
+        ></v-switch>
+
+        <v-switch
+          v-model="items.user.sections.content.access"
+          label="content"
+          color="success"
+        ></v-switch>
+        <div style="margin-left: 50px">
+          <v-switch
+            v-model="items.user.sections.content.sections.name.access"
+            label="Name"
+            color="success"
+          ></v-switch>
+          <v-switch
+            v-model="items.user.sections.content.sections.phone.access"
+            label="Phone"
+            color="success"
+          ></v-switch>
+          <v-switch
+            v-model="items.user.sections.content.sections.email.access"
+            label="Email"
+            color="success"
+          ></v-switch>
+          <v-switch
+            v-model="items.user.sections.content.sections.age.access"
+            label="Age"
+            color="success"
+          ></v-switch>
+          <v-switch
+            v-model="items.user.sections.content.sections.gender.access"
+            label="Gender"
+            color="success"
+          ></v-switch>
+          <v-switch
+            v-model="items.user.sections.content.sections.relationship.access"
+            label="Relationship status"
+            color="success"
+          ></v-switch>
+          <v-switch
+            v-model="items.user.sections.content.sections.salary.access"
+            label="Salary"
+            color="success"
+          ></v-switch>
+        </div>
+        <v-switch
+          v-model="items.user.sections.footer.access"
+          label="Footer"
+          color="success"
+        ></v-switch>
+      </div>
+      <br />
+
+      <!--Transaction -->
+      <v-switch
+        v-model="items.transaction.access"
+        label="Transaction Page"
+        color="success"
+      ></v-switch>
+      <div style="margin-left: 50px; margin-top: -25px">
+        <v-switch
+          v-model="items.transaction.sections.header.access"
+          label="Header"
+          color="success"
+        ></v-switch>
+
+        <v-switch
+          v-model="items.transaction.sections.content.access"
+          label="content"
+          color="success"
+        ></v-switch>
+        <div style="margin-left: 50px">
+          <v-switch
+            v-model="items.transaction.sections.content.sections.goods.access"
+            label="Goods"
+            color="success"
+          ></v-switch>
+          <v-switch
+            v-model="
+              items.transaction.sections.content.sections.services.access
+            "
+            label="Services"
+            color="success"
+          ></v-switch>
+          <v-switch
+            v-model="items.transaction.sections.content.sections.inbound.access"
+            label="Inbound"
+            color="success"
+          ></v-switch>
+          <v-switch
+            v-model="
+              items.transaction.sections.content.sections.outbound.access
+            "
+            label="Outbound"
+            color="success"
+          ></v-switch>
+        </div>
+        <v-switch
+          v-model="items.transaction.sections.footer.access"
+          label="Footer"
+          color="success"
+        ></v-switch>
+      </div>
+      <br />
+      <br />
+      <v-btn depressed color="primary" @click="save"> Save </v-btn>
+    </v-card>
+    <br />
