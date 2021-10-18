@@ -5,7 +5,7 @@
       style="padding: 50px; padding-bottom: 0; height: 350px; width: 500px"
     >
       <form>
-        <h3 class="text text-center">Sign in</h3>
+        <h3 class="text text-center">SIGN IN</h3>
         <v-text-field v-model="name" label="Name" required></v-text-field>
         <v-text-field
           v-model="password"
@@ -59,10 +59,22 @@ export default class extends Vue {
             );
           }
         });
-      });
     if (this.val === false) {
       this.message = "Incorrect Name Or Password";
     }
+      }
+      
+      );
+   let res= await fetch("http://localhost:3000/users",{
+     method:'POST' ,
+     headers:{
+       "Content-type":"application/json",
+       "Accept":"application/json"
+     },
+    body: JSON.stringify(item)
+   })
+   res= await res.json()
+   console.log(res)
   }
 }
 </script>

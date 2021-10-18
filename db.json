@@ -11,15 +11,15 @@
           "sections": {
             "header": {
               "name": "header",
-              "access": false
+              "access": true
             },
             "content": {
               "name": "content",
-              "access": false
+              "access": true
             },
             "footer": {
               "name": "footer",
-              "access": false
+              "access": true
             }
           }
         },
@@ -28,27 +28,27 @@
           "sections": {
             "header": {
               "name": "header",
-              "access": false
+              "access": true
             },
             "content": {
               "name": "content",
-              "access": false,
+              "access": true,
               "sections": {
                 "name": {
                   "name": "name",
-                  "access": false
+                  "access": true
                 },
                 "email": {
                   "name": "email",
-                  "access": false
+                  "access": true
                 },
                 "phone": {
                   "name": "phone",
-                  "access": false
+                  "access": true
                 },
                 "age": {
                   "name": "age",
-                  "access": false
+                  "access": true
                 },
                 "gender": {
                   "name": "gender",
@@ -89,21 +89,21 @@
                 },
                 "services": {
                   "name": "services",
-                  "access": true
+                  "access": false
                 },
                 "inbound": {
                   "name": "inbound",
-                  "access": true
+                  "access": false
                 },
                 "outbound": {
                   "name": "outbound",
-                  "access": true
+                  "access": false
                 }
               }
             },
             "footer": {
               "name": "footer",
-              "access": true
+              "access": false
             }
           }
         }
@@ -217,6 +217,11 @@
           }
         }
       }
+    },
+    {
+      "name": "Nipun",
+      "password": "1234",
+      "id": 3
     }
   ]
 }

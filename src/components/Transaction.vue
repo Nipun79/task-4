@@ -1,9 +1,9 @@
 <template>
   <v-container fluid>
       <br>
-    <v-row dense>
+    <v-row dense >
       <v-col v-for="(card,i) in cards" :key="card.title" :cols="card.flex">
-        <v-card style="padding: 10px;height: 250px">
+        <v-card style="padding: 10px;height: 250px;overflow:hidden" >
           <div v-if="per[i]">
           <v-card-title v-text="card.title" class="ms-n3"></v-card-title>
           <div class="text--primary">

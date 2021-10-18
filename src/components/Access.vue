@@ -19,7 +19,7 @@
               :label="section.name"
               color="success"
               v-model="section.access"
-              @click="change(item.name + '' + section.name)"
+              @click.stop="change(item.name + '' + section.name)"
             ></v-switch>
             <div v-if="section.name === 'content'">
               <div
@@ -31,7 +31,7 @@
                     :label="content.name"
                     color="success"
                     v-model="content.access"
-                    @click="change(content.name + '-content')"
+                    @click.stop="change(content.name + '-content')"
                   ></v-switch>
                 </div>
               </div>
@@ -62,32 +62,24 @@
             </v-alert>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="primary" text @click="dialog = false"> Okay </v-btn>
+              <v-btn color="primary" text @click.stop="dialog = false">
+                Okay
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
       </div>
 
-<!--  Error-message -->
-<v-snackbar
-      v-model="snackbar"
-      :timeout="timeout"
-    >
-      Parent is not active
+      <!--  Error-message -->
+      <v-snackbar v-model="snackbar" :timeout="timeout">
+        {{text}}
 
-      <template v-slot:action="{ attrs }">
-        <v-btn
-          color="blue"
-          text
-          v-bind="attrs"
-          @click="snackbar = false"
-        >
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
-
-
+        <template v-slot:action="{ attrs }">
+          <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
     </v-card>
   </div>
 </template>
@@ -97,9 +89,10 @@ import Component from "vue-class-component";
 import { vxm } from "../store/store.vuex";
 @Component
 export default class AccesController extends Vue {
-  snackbar=false
-  timeout= 2000
+  snackbar = false;
+  timeout = 2000;
   data = vxm.utility;
+  text=""
   items = {};
   async mounted() {
     await vxm.utility.fetchData();
@@ -110,7 +103,7 @@ export default class AccesController extends Vue {
   }
   dialog = false;
   event = "";
-  change(event) {
+  change(event, e) {
     console.log(event);
 
     if (event === "home") {
@@ -118,41 +111,6 @@ export default class AccesController extends Vue {
       home.header.access = false;
       home.footer.access = false;
       home.content.access = false;
-    }
-
-    if (event === "user") {
-      let user = this.items.user.sections;
-      user.header.access = false;
-      user.footer.access = false;
-      user.content.access = false;
-      event = "usercontent";
-    }
-
-    if (event === "transaction") {
-      let transaction = this.items.transaction.sections;
-      transaction.header.access = false;
-      transaction.footer.access = false;
-      transaction.content.access = false;
-      event = "transactioncontent";
-    }
-
-    if (event === "usercontent") {
-      let user = this.items.user.sections.content.sections;
-      user.name.access = false;
-      user.phone.access = false;
-      user.age.access = false;
-      user.salary.access = false;
-      user.gender.access = false;
-      user.email.access = false;
-      user.relationship.access = false;
-    }
-
-    if (event === "transactioncontent") {
-      let transaction = this.items.transaction.sections.content.sections;
-      transaction.goods.access = false;
-      transaction.services.access = false;
-      transaction.inbound.access = false;
-      transaction.outbound.access = false;
     }
 
     if (
@@ -170,9 +128,38 @@ export default class AccesController extends Vue {
                 false),
           10
         );
-        this.snackbar=true
-      }
+        this.snackbar = true;
+        this.text="Home is not active"
+       }
     }
+
+    if (event === "user") {
+      let user = this.items.user.sections;
+      user.header.access = false;
+      user.footer.access = false;
+      user.content.access = false;
+      user = this.items.user.sections.content.sections;
+      user.name.access = false;
+      user.phone.access = false;
+      user.age.access = false;
+      user.salary.access = false;
+      user.gender.access = false;
+      user.email.access = false;
+      user.relationship.access = false;
+      // event = "usercontent";
+    }
+
+    if (event === "usercontent") {
+      let user = this.items.user.sections.content.sections;
+      user.name.access = false;
+      user.phone.access = false;
+      user.age.access = false;
+      user.salary.access = false;
+      user.gender.access = false;
+      user.email.access = false;
+      user.relationship.access = false;
+    }
+
     if (
       event === "name-content" ||
       event === "email-content" ||
@@ -180,10 +167,7 @@ export default class AccesController extends Vue {
       event === "age-content" ||
       event === "gender-content" ||
       event === "salary-content" ||
-      event === "relationship status-content" ||
-      event === "userfooter" ||
-      event === "userheader" ||
-      event === "usercontent"
+      event === "relationship status-content"
     ) {
       let user = this.items.user.sections.content.sections;
       if (this.items.user.sections.content.access === false) {
@@ -197,7 +181,8 @@ export default class AccesController extends Vue {
             user.relationship.access =
               false;
         }, 10);
-        this.snackbar=true
+        this.snackbar = true;
+        this.text="User's content is not active"
       }
     }
 
@@ -213,8 +198,30 @@ export default class AccesController extends Vue {
             this.items.user.sections.footer.access =
               false;
         }, 10);
-        this.snackbar=true
+
+        this.snackbar = true;
+        this.text="User is not active"
       }
+    }
+
+    if (event === "transaction") {
+      let transaction = this.items.transaction.sections;
+      transaction.header.access = false;
+      transaction.footer.access = false;
+      transaction.content.access = false;
+      transaction = this.items.transaction.sections.content.sections;
+      transaction.goods.access = false;
+      transaction.services.access = false;
+      transaction.inbound.access = false;
+      transaction.outbound.access = false;
+    }
+
+    if (event === "transactioncontent") {
+      let transaction = this.items.transaction.sections.content.sections;
+      transaction.goods.access = false;
+      transaction.services.access = false;
+      transaction.inbound.access = false;
+      transaction.outbound.access = false;
     }
 
     if (
@@ -232,9 +239,11 @@ export default class AccesController extends Vue {
             transaction.outbound.access =
               false;
         }, 10);
-        this.snackbar=true
+        this.snackbar = true;
+        this.text="Transaction's content is not active"
       }
     }
+
     if (
       event === "transactionheader" ||
       event === "transactioncontent" ||
@@ -248,7 +257,8 @@ export default class AccesController extends Vue {
             transaction.content.access =
               false;
         }, 10);
-        this.snackbar=true
+        this.snackbar = true;
+        this.text="Transaction is not active"
       }
     }
   }
